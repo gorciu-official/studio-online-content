@@ -12,20 +12,17 @@ setInterval(function () {
 
     if (obstacle) {
         const w = obstacle.width
-        const x = obstacle.xPos // measured from left of canvas
-        const y = obstacle.yPos // measured from top of canvas
+        const x = obstacle.xPos 
+        const y = obstacle.yPos
         const yFromBottom = CANVAS_HEIGHT - y - obstacle.typeConfig.height
         const isObstacleNearby = x < 25 * speed - w / 2
 
         if (isObstacleNearby) {
             if (yFromBottom > DINO_HEIGHT) {
-                // Pterodactyl going from above, do nothing
             } else if (y > CANVAS_HEIGHT / 2) {
-                // Jump
                 dispatchKey("keyup", KEY_CODE_ARROW_DOWN)
                 dispatchKey("keydown", KEY_CODE_SPACE_BAR)
             } else {
-                // Duck
                 dispatchKey("keydown", KEY_CODE_ARROW_DOWN)
             }
         }
